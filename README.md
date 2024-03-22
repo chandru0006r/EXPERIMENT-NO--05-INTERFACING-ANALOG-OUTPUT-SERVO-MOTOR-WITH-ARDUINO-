@@ -1,9 +1,7 @@
-###  DATE: 
-
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
-
+###  DATE: 22/03/2024
+###  NAME: CHANDRU V
+###  ROLL NO : 212222040029
+###  DEPARTMENT: CSE
 
 # EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
 
@@ -61,6 +59,13 @@ CIRCUIT DIAGRAM
 
 ### FIGURE 04 CIRCUIT DIAGRAM
 
+### OUTPUT:
+![image](https://github.com/chandru0006r/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/99141707/5efe533e-7647-49ea-a2d5-9a8f6e29b1ba)
+![image](https://github.com/chandru0006r/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/99141707/afc19e17-1213-4649-80be-eac1b7f0837a)
+![image](https://github.com/chandru0006r/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/99141707/f4a2ab55-23cd-48cd-ac57-3dfc6ed990c3)
+
+
+
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
 2.	Connect the board to your computer via the USB cable.
@@ -74,6 +79,50 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
+```
+#include <Servo.h>
+
+Servo sr1;
+int pos=0;
+int red=9;
+int green=8;
+
+void setup()
+{
+  sr1.attach(6);
+  Serial.begin(9600);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+}
+
+void loop()
+{
+ for(pos=0;pos<=180;pos+=5){
+   sr1.write(pos);
+   delay(200);
+   Serial.println(pos);
+   if(pos>=120){
+   		digitalWrite(red,HIGH);
+    	delay(200);
+   		digitalWrite(red,LOW);
+    	delay(200);
+  	}
+}
+ 
+  for(pos=180;pos>=0;pos-=5) {
+    sr1.write(pos);
+    delay(200);
+    Serial.println(pos);
+    
+    if(pos<=100){
+   		digitalWrite(green,HIGH);
+    	delay(200);
+   		digitalWrite(green,LOW);
+    	delay(200);
+  	}
+  }
+ }
+```
  
 
 
